@@ -1,9 +1,16 @@
+# Recipe Scraper
 
+## **Description**
+A web scraper designed to scrape [www.skinnytaste.com](#www.skinnytaste.com) for recipes 
+
+## **Requirements**
 Requires python-dotenv package
-pip install python-dotenv
 
+```pip install python-dotenv```
 
-### **Recipe**
+## **Database Tables and Fields**
+
+**recipes**
 - recipe id
 - recipe_name
 - recipe_notes
@@ -11,10 +18,10 @@ pip install python-dotenv
 - calories
 - prep_time
 - cook_time
-- difficulty (simple, moderate, intermediate, hard)
+- difficulty (East, moderate, hard)
 - method_id
 
-### **Ingredients**
+**ingredients**
 - id
 - recipe_id
 - ingredient_id
@@ -23,17 +30,17 @@ pip install python-dotenv
 - unit
 - ingredient_notes
 
-### **Recipe_method**
+**recipe_method**
 - method_id
 - recipe_id
 - method
 
-### **Recipe_diet**
+**recipe_diet**
 - id
 - recipe_id
 - diet_type  (Vegetarian, Gluten Free, Paleo, Keto, Dairy Free, Low Carb)
 
-### **Recipe_courses**
+**recipe_courses**
 - id
 - recipe_id
 - course

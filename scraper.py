@@ -240,10 +240,12 @@ def insertRecipeCourse(recipe_id, course):
 
 if __name__ == "__main__":
 
-    count = 0
     now = datetime.now()
     dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
     print(f"Start: {dt_string}\n")	
+    
+    count = 0
+    start = 0
 
     for diet in dietList:
         urlList = getRecipeUrls(start, numOfPages, diet)
