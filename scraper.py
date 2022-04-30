@@ -245,7 +245,7 @@ if __name__ == "__main__":
     print(f"Start: {dt_string}\n")	
     
     count = 0
-    start = 0
+    start = 1
 
     for diet in dietList:
         urlList = getRecipeUrls(start, numOfPages, diet)
