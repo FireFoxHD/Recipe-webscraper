@@ -13,5 +13,7 @@ def getConnection():
         connection = mysql.connector.connect(host=DB_HOST, user=DB_USER, passwd=DB_PASS, database=DB_NAME)
         return connection
     except mysql.connector.Error as error:
-        print("Failed to insert record {}".format(error))  
+        print("Failed to insert record {}".format(error))
+
+  
 

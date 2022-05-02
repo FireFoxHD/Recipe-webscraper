@@ -13,7 +13,6 @@ ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
 dietList = ['Vegetarian', 'Gluten-Free', 'Paleo', 'Keto', 'Dairy-Free', 'Low-Carb']
-numOfPages = 5
 connection = getConnection()
 cursor = connection.cursor(buffered=True)
 
@@ -39,9 +38,9 @@ def getDifficulty(cook_time):
     elif(15 < cook_time <= 30): return "Moderate"
     elif(cook_time > 30): return "Hard"
 
-def updatePageUrl(num, diet, numOfPages=5):
-    url = f"https://www.skinnytaste.com/recipes/{diet}/page/{num}/"
-    print(f"Page {num} of {numOfPages}...[{url}]")
+def updatePageUrl(currentPage, diet, numOfPages):
+    url = f"https://www.skinnytaste.com/recipes/{diet}/page/{currentPage}/"
+    print(f"Page {currentPage} of {numOfPages}...[{url}]")
     return url
 
 def getRecipeUrls(start, numOfPages, diet):
@@ -56,7 +55,7 @@ def getRecipeUrls(start, numOfPages, diet):
 
     pageCount = start
     while pageCount <= numOfPages:
-        req = Request(updatePageUrl(pageCount, diet), headers={'User-Agent': 'Mozilla/5.0'})
+        req = Request(updatePageUrl(pageCount, diet, numOfPages), headers={'User-Agent': 'Mozilla/5.0'})
         html = urlopen(req, timeout=10, context=ctx).read()
         soup = BeautifulSoup(html, 'html.parser')
 
@@ -245,10 +244,11 @@ if __name__ == "__main__":
     print(f"Start: {dt_string}\n")	
     
     count = 0
-    start = 1
+    start = 6
+    end = 10
 
     for diet in dietList:
-        urlList = getRecipeUrls(start, numOfPages, diet)
+        urlList = getRecipeUrls(start, end, diet)
         print(f"Completed....gathered {len(urlList)} {diet} recipe urls\n")
         print("Inserting....\n")
         for url in urlList:
@@ -258,6 +258,7 @@ if __name__ == "__main__":
                 cur_time = datetime.now().strftime("%H:%M:%S")
                 print(f"{count}) {recipe_name} was Complete -- {cur_time}\n")
     
+
     cursor.close()
 
     
