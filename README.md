@@ -7,6 +7,8 @@ A web scraper designed to scrape [www.skinnytaste.com](#www.skinnytaste.com) for
 Requires python-dotenv package
 
 ```pip install python-dotenv```
+```pip install mysql-connector-python```
+```pip install beautifulsoup```
 
 ## **Database Tables and Fields**
 
@@ -14,7 +16,6 @@ Requires python-dotenv package
 - recipe id
 - recipe_name
 - recipe_notes
-- diet (keto etc)
 - calories
 - prep_time
 - cook_time
